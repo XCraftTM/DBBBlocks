@@ -1,27 +1,28 @@
 # DBB Blocks
 This Stores Discord Bot Builder Blocks created by the Community
 
-## __Music Blocks__
+
+## Music Blocks
 
 ### Setup
 
-> If you used Discord Player Before then remove `@discord-player/downloader`:
-> `npm remove @discord-player/downloader`
+If you used Discord Player Before then remove `@discord-player/downloader`:
+`npm remove @discord-player/downloader`
 
-> First Update your Library with:
-> `npm i discord-player@6.0.0`
-> And install the dependency with:
-> `npm install @discord-player/extractor`
-> (This is required for Downloading the Songs)
+First Update your Library with:
+`npm i discord-player@6.0.0`
+And install the dependency with:
+`npm install @discord-player/extractor`
+(This is required for Downloading the Songs)
 
-> Required Dependencies for Downloading and playing Music:
-> `npm install @discordjs/opus`
-> `npm install ffmpeg-static`
-> `npm install play-dl`
-> (These will also be installed with `discord audio player dependency`-Block)
+Required Dependencies for Downloading and playing Music:
+`npm install @discordjs/opus`
+`npm install ffmpeg-static`
+`npm install play-dl`
+(These will also be installed with `discord audio player dependency`-Block)
 
 ### Blocks
-> [Play Audio in Queue](play_audio_in_queue.js)
+[Play Audio in Queue](play_audio_in_queue.js)
 [Create Queue in Voice Channel](create_queue_in_vc.js)
 [Control Queue](control_queue.js)
 [Find Queue](find_queue.js)
@@ -37,7 +38,7 @@ This Stores Discord Bot Builder Blocks created by the Community
 [Apply Queue Filter](apply_queue_filter.js)
 
 ### Events
-> [Player Debug Event](player_debug_event.js)
+[Player Debug Event](player_debug_event.js)
 [Player Error Event](player_error_event.js)
 [Queue End Event](queue_end_event.js)
 [Track Add Event](track_add_event.js)
