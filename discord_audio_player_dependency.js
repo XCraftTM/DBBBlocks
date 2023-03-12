@@ -15,6 +15,8 @@ module.exports = {
         if (!DBB.Dependencies.DiscordPlayer)
             DBB.Dependencies.DiscordPlayer = {}
 
+        await DBB.Core.require("discord-player@latest")
+
         const { Player } = require("discord-player");
         DBB.Dependencies.DiscordPlayer.module = require("discord-player")
 

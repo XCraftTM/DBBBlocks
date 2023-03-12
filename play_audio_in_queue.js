@@ -79,8 +79,6 @@ module.exports = {
         } else if (!queue.isPlaying()) {
             await queue.node.play();
         }
-        const delay = ms => new Promise(res => setTimeout(res, ms));
-        await delay(100);
         this.RunNextBlock("action", cache);
     }
 }
