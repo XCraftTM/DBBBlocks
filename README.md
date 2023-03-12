@@ -17,6 +17,7 @@ First Update your Library with:
 ```
 npm i discord-player@latest
 ```
+
 <br>
 Required Dependencies for Downloading and playing Music:  
 ```
@@ -24,6 +25,7 @@ npm install @discordjs/opus
 npm install ffmpeg-static
 npm install play-dl
 ```
+
 (These will also be installed with `discord audio player dependency`-Block)
 <br>
 
