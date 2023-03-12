@@ -1,6 +1,7 @@
 # DBB Blocks
 This Stores Discord Bot Builder Blocks created by the Community
 
+***
 
 ## Music Blocks
 
@@ -28,3 +29,8 @@ npm install play-dl
 
 ### Events
 [Player Debug Event](player_debug_event.js)<br>[Player Error Event](player_error_event.js)<br>[Queue End Event](queue_end_event.js)<br>[Track Add Event](track_add_event.js)<br>[Tracks Add Event](tracks_add_event.js)<br>[Track End Event](track_end_event.js)<br>[Track Start Event](track_start_event.js)
+
+### Troubleshooting
+> A quick follow-up for discord-player v6, if you are getting weird errors like `something is not a constructor` or` version.split is not a function` or something similar, please try the following:
+> 
+> Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm cache clean --force` or similar command equivalent to your package manager and then run `npm install` (or the install command of your package manager)
