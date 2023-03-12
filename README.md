@@ -6,22 +6,12 @@ This Stores Discord Bot Builder Blocks created by the Community
 
 ### Setup
 
-If you used Discord Player Before then remove `@discord-player/downloader`:
-```
-npm remove @discord-player/downloader
-```
+> If you used Discord Player Before then remove `@discord-player/downloader`:<br>npm remove @discord-player/downloader
 
 First Update your Library with:
 ```
-npm i discord-player@6.0.0
+npm i discord-player@latest
 ```
-
-And install the dependency with:
-```
-npm install @discord-player/extractor
-```
-
-(This is required for Downloading the Songs)
 
 Required Dependencies for Downloading and playing Music:
 ```
@@ -29,7 +19,6 @@ npm install @discordjs/opus
 npm install ffmpeg-static
 npm install play-dl
 ```
-
 (These will also be installed with `discord audio player dependency`-Block)
 
 
