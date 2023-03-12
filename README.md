@@ -58,6 +58,8 @@ A quick follow-up for discord-player v6, if you are getting weird errors like `s
 
 Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm cache clean --force` or similar command equivalent to your package manager and then run `npm install` (or the install command of your package manager)
 
+***
+
 ## Forum Blocks
 
 ### Description
