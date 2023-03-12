@@ -13,12 +13,12 @@ npm remove @discord-player/downloader
 ```
 
 <br>
-First Update your Library with:
+First Update your Library with:  
 ```
 npm i discord-player@latest
 ```
 <br>
-Required Dependencies for Downloading and playing Music:
+Required Dependencies for Downloading and playing Music:  
 ```
 npm install @discordjs/opus
 npm install ffmpeg-static
