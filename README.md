@@ -61,7 +61,7 @@ npm install play-dl
 [Track Start Event](/Music%20Blocks/track_start_event.js)  
 
 ### Troubleshooting
-A quick follow-up for discord-player v6, if you are getting weird errors like `something is not a constructor` or` version.split is not a function` or something similar, please try the following:
+A quick follow-up for discord-player v6, if you are getting weird errors like `something is not a constructor` or `version.split is not a function` or something similar, please try the following:
 
 Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm cache clean --force` or similar command equivalent to your package manager and then run `npm install` (or the install command of your package manager)
 
@@ -78,3 +78,35 @@ These Blocks are Used to Create And Manage Forum Channel Threads
 [Get Forum Info](/Forum%20Blocks/get_forum_info.js)  
 [Get Forum Tag Info](/Forum%20Blocks/get_forum_tag_info.js)  
 [Get Thread Info](/Forum%20Blocks/get_thread_info.js)  
+
+***
+
+## Interaction Blocks
+
+### Description
+These Blocks are used for Slash Commands, Modals, Buttons and Select Menus.
+
+### Blocks
+[Create Modal](/Interaction%20Blocks/create_modal.js)  
+> Creates the Modal using the Create Modal Input 
+
+[Create Modal Input](/Interaction%20Blocks/create_modal_input.js)  
+> Creates a Text Input Field
+
+[Get Interaction Argument By Name](/Interaction%20Blocks/get_interaction_argument_by_name.js)  
+> Gets an Interaction Argument by it's CustomID
+
+[Interaction Send Reply](/Interaction%20Blocks/interaction_send_reply_fixed.js)  
+> Sends an Interaction Reply
+
+[Interaction Update](/Interaction%20Blocks/interaction_update.js)  
+> Updates/Edits the Interactions Message/Interaction
+
+[Reply to Interaction](/Interaction%20Blocks/reply_interaction.js)  
+> Gives Reply Options like: Reply, Defer, Delete, FollowUp and Fetch
+
+
+### Events
+[Interaction Event](/Interaction%20Blocks/interaction_event.js)  
+[Register Slash Commands](/Interaction%20Blocks/register_slash_commands.js)  
+
