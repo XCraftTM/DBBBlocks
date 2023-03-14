@@ -123,6 +123,11 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: index.md
-  - Getting started:
-    - Installation: getting-started.md
+  - Getting Started: index.md
+  - Examples: 
+    - Slash Commands: slash-commands.md
+    - Modals: modals.md
+    - Buttons: buttons.md
+    - Embeds: embeds.md
+    - Discord Audio Player: musicplayer.md
+    
