@@ -1,8 +1,5 @@
 name: Build Docs Page
-on:
-  push:
-    branches:
-      - 'docs'
+on: [push]
       
 permissions: read-all|write-all
 
