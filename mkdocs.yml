@@ -14,8 +14,8 @@ theme:
   name: material
   features:
     - announce.dismiss
-    - content.action.edit
-    - content.action.view
+    #- content.action.edit
+    #- content.action.view
     - content.code.annotate
     - content.code.copy
     # - content.tabs.link
@@ -23,11 +23,11 @@ theme:
     # - header.autohide
     # - navigation.expand
     - navigation.footer
-    - navigation.indexes
+    #- navigation.indexes
     # - navigation.instant
     # - navigation.prune
     - navigation.sections
-    - navigation.tabs
+    #- navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking

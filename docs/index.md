@@ -17,11 +17,11 @@ We offer support to the community and the opportunity to meet new people in our 
 
 In order to allow your bot to run, you will need to install Node.js.
 
-??? info Installing on Windows
+??? info "Installing on Windows"
     - Click [here](https://nodejs.org/dist/latest-v18.x/node-v18.15.0-x64.msi) to download the installer for the LTS version of Node.js.
     - Follow the installer's instructions
 
-??? info Installing on Ubuntu via CLI
+??? info "Installing on Ubuntu via CLI"
     - Copy these commands using the copy button in the top right hand corner of the box and paste them into your command line.
     ```
     curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
@@ -77,3 +77,27 @@ Finally, complete the reCAPTCHA, click Verify, and this message should display.
 ![EndImageDiscordInvitePage](https://i.imgur.com/wubHQWG.png)
 
 That means you're all set and the bot's now in your server.
+
+## Other Important Stuff
+
+!!! warning "Important"
+    Without an event, your command will never work! Events are the only blocks that have no "Action Connection" input since they get triggered by the bot itself.
+
+??? info "Variable Types"
+    ![Image](https://i.imgur.com/1n2IEHy.jpeg)
+
+The line types must match to connect two blocks.
+
+On the Output side of the block, there can be as many connections to one point as you like (except on the action type).
+
+On the Input side of the block, there can always only be one connection per point.
+
+??? note "Good to know"
+    Server = Guild
+
+    User ≠ Member
+
+    A member is a user that is relevant to the guild only. You can execute actions to do with a specific server with a member.
+
+## Your turn!
+Use these Examples, Tutorials and Infos to create your own Bot. Maybe you can even try to code your own Blocks and learn Javascript!
