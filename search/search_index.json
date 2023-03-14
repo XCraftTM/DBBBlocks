@@ -1,1 +1,0 @@
-{"config":{"lang":["en"],"separator":"[\\s\\-,:!=\\[\\]()\"`/]+|\\.(?!\\d)|&[lg]t;|(?!\\b)(?=[A-Z][a-z])","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Welcome to DBB Docs","text":"<p>This will explain how to use Discord Bot Builder! more...</p>"}]}
