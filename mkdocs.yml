@@ -70,6 +70,7 @@ extra:
 
 # Extensions
 markdown_extensions:
+  - lightgallery
   - abbr
   - admonition
   - attr_list
