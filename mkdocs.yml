@@ -59,6 +59,17 @@ theme:
 plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       auto_caption: false
+       caption_position: bottom
 
 # Customization
 extra:
@@ -70,7 +81,6 @@ extra:
 
 # Extensions
 markdown_extensions:
-  - lightgallery
   - abbr
   - admonition
   - attr_list
