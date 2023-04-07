@@ -2,7 +2,7 @@
 This Section will explain how to Create, Setup and Use Slash Commands.
 
 !!! warning "Requirements"
-    [Autocode Slash Commands Builder](autocode.com/tools/discord/command-builder/)  
+    [Autocode Slash Commands Builder](https://autocode.com/tools/discord/command-builder/)  
     [Register Slash Commands Block](https://github.com/XCraftTM/DBBBlocks/blob/main/Interaction%20Blocks/register_slash_commands.js)  
     [Interaction Event](https://github.com/XCraftTM/DBBBlocks/blob/main/Interaction%20Blocks/interaction_event.js)  
     [Get Interaction Argument by Name](https://github.com/XCraftTM/DBBBlocks/blob/main/Interaction%20Blocks/get_modal_argument_by_name.js)  
@@ -10,7 +10,7 @@ This Section will explain how to Create, Setup and Use Slash Commands.
 
 ## Create Commands
 
-First go to the [Autocode Slash Commands Builder](autocode.com/tools/discord/command-builder/) Website and Create a command of your Choice, in this example it will be a say command:  
+First go to the [Autocode Slash Commands Builder](https://autocode.com/tools/discord/command-builder/) Website and Create a command of your Choice, in this example it will be a say command:  
 ![Image](https://i.imgur.com/KSvMsRp.png)  
 The Website display you a Preview of the Command on the right!
 

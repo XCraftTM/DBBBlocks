@@ -126,6 +126,7 @@ nav:
   - Getting Started: index.md
   - Examples: 
     - Slash Commands: slash-commands.md
+    - Context Menu: context.md
     - Modals: modals.md
     - Buttons: buttons.md
     - Embeds: embeds.md
