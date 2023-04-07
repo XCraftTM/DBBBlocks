@@ -15,9 +15,14 @@ module.exports = {
         {
             "id": "queue",
             "name": "Queue",
-            "description": "Acceptable Types: Object\n\nDescription: The Queue of which you want to get Infos from.",
-            "types": ["object", "undefined"],
-            "required": true
+            "description": "Acceptable Types: Object\n\nDescription: The Queue of which you want to get Infos from.\nONLY USE QUEUE OR SERVER, NOT BOTH!!!",
+            "types": ["object", "unspecified"]
+        },
+        {
+            "id": "guild",
+            "name": "Server",
+            "description": "Acceptable Types: Object\n\nDescription: The Server of which you want to get Infos from.\nONLY USE QUEUE OR SERVER, NOT BOTH!!!",
+            "types": ["object", "unspecified"]
         }
     ],
 
@@ -62,7 +67,17 @@ module.exports = {
 
     async code(cache) {
         const queue_info = parseInt(this.GetOptionValue("queue_info", cache));
-        const queue = this.GetInputValue("queue", cache);
+        const guild = this.GetInputValue("guild", cache);
+        const temp = this.GetInputValue("queue", cache);
+        let queue;
+        if (guild) {
+            const { useQueue } = require("discord-player");
+            queue = useQueue(guild.id);
+        } else if (temp) {
+            queue = temp;
+        } else {
+            throw new ReferenceError("Queue is not defined!")
+        }
         const { QueueRepeatMode } = require("discord-player");
 
         let result;

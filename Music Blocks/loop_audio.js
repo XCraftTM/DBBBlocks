@@ -1,7 +1,7 @@
 module.exports = {
-    name: "Control Queue",
+    name: "Loop Audio",
 
-    description: "Control Queue with different Actions",
+    description: "Change the Loop Mode of the Current Queue!",
 
     category: ".Audio V2",
 
@@ -23,18 +23,15 @@ module.exports = {
 
     options: [
         {
-            "id": "action",
-            "name": "Action",
-            "description": "Description: What to do with the Queue.",
+            "id": "mode",
+            "name": "Loop Mode",
+            "description": "Description: Loop Mode",
             "type": "SELECT",
             "options": {
-                "pause": "Pause/Resume",
-                "play": "Play",
-                "skip": "Skip",
-                "stop": "Stop",
-                "shuffle": "Shuffle",
-                "clear": "Clear",
-                "back": "Back"
+                "track": "Loop Track",
+                "queue": "Loop Queue",
+                "autoplay": "Autoplay",
+                "off": "Off"
             }
         }
     ],
@@ -52,35 +49,24 @@ module.exports = {
         const guild = this.GetInputValue("guild", cache);
         const { useQueue } = require("discord-player");
         const queue = useQueue(guild.id);
-        const action = this.GetOptionValue("action", cache);
+        const mode = this.GetOptionValue("mode", cache);
+        const { QueueRepeatMode } = require("discord-player");
 
-        switch (action) {
-            case "pause":
-                if (queue.isPlaying()) {
-                    queue.node.pause();
-                } else if (!queue.isPlaying()) {
-                    queue.node.resume();
-                }
+        switch (mode) {
+            case "track":
+                queue.setRepeatMode(QueueRepeatMode.TRACK);
                 break;
-            case "play":
-                queue.node.play();
+            case "queue":
+                queue.setRepeatMode(QueueRepeatMode.QUEUE);
                 break;
-            case "skip":
-                await queue.node.skip();
+            case "autoplay":
+                queue.setRepeatMode(QueueRepeatMode.AUTOPLAY);
                 break;
-            case "stop":
-                queue.node.stop();
-                break;
-            case "shuffle":
-                queue.tracks.shuffle();
-                break;
-            case "clear":
-                queue.tracks.clear();
-                break;
-            case "back":
-                queue.history.back();
+            case "off":
+                queue.setRepeatMode(QueueRepeatMode.OFF);
                 break;
         }
+
         this.RunNextBlock("action", cache);
     }
 }

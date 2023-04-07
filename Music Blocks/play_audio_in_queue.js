@@ -1,7 +1,7 @@
 module.exports = {
-    name: "Play Song in Queue",
+    name: "Play Song",
 
-    description: "Plays audio (e.g. YouTube, Spotify, SoundCloud, ...) in a Queue.",
+    description: "Plays audio (e.g. YouTube, Spotify, SoundCloud, ...)",
 
     category: ".Audio V2",
 
@@ -13,9 +13,9 @@ module.exports = {
             "types": ["action"]
         },
         {
-            "id": "queue",
-            "name": "Queue",
-            "description": "Acceptable Types: Object, Unspecified\n\nDescription: The Queue Object!",
+            "id": "voicechannel",
+            "name": "Voice Channel",
+            "description": "Acceptable Types: Object, Unspecified\n\nDescription: The Voice Channel to join...",
             "types": ["object", "unspecified"],
             "required": true
         },
@@ -30,14 +30,40 @@ module.exports = {
 
     options: [
         {
-            "id": "action",
-            "name": "Action",
-            "description": "Description: What to do with the Track(s)",
+            "id": "leaveonempty",
+            "name": "Leave on Empty Queue?",
+            "description": "Description: Leave on Empty Queue?",
             "type": "SELECT",
             "options": {
-                "playnow": "Play Now",
-                "add": "Add to Queue"
+                false: "False/No",
+                true: "True/Yes"
             }
+        },
+        {
+            "id": "autoselfdeaf",
+            "name": "Deaf Bot?",
+            "description": "Description: Deaf Bot? (More Privacy)",
+            "type": "SELECT",
+            "options": {
+                true: "True/Yes",
+                false: "False/No"
+            }
+        },
+        {
+            "id": "leaveonened",
+            "name": "Leave on End?",
+            "description": "Description: Leave on End?",
+            "type": "SELECT",
+            "options": {
+                false: "False/No",
+                true: "True/Yes"
+            }
+        },
+        {
+            "id": "initialvolume",
+            "name": "Initial Volume",
+            "description": "Description: The Volume the bot should have!",
+            "type": "TEXT"
         }
     ],
 
@@ -51,33 +77,56 @@ module.exports = {
         {
             "id": "track",
             "name": "Track",
-            "description": "Type: Object, Unspecified\n\nDescription: The Track Object",
+            "description": "Type: Object, List, Unspecified\n\nDescription: The Track Object/List",
             "types": ["object", "list", "unspecified"]
         }
     ],
 
     async code(cache) {
         const song = this.GetInputValue("song", cache);
-        const queue = this.GetInputValue("queue", cache);
-        const action = this.GetOptionValue("action", cache);
+        const vc = this.GetInputValue("voicechannel", cache);
 
-        const player = await this.getDependency("DiscordPlayer", cache).player;
-        var track = await player.search(song, {
-            requestedBy: undefined
-        });
+        var leaveonempty = this.GetOptionValue("leaveonempty", cache);
+        var autoselfdeaf = this.GetOptionValue("autoselfdeaf", cache);
+        var leaveonend = this.GetOptionValue("leaveonened", cache);
+        var initialvolume = parseInt(this.GetOptionValue("initialvolume", cache)) || 50;
 
-        if (track.playlist) {
-            await queue.addTrack(track.tracks);
-            this.StoreOutputValue(track.tracks[0], "track", cache);
+        if (leaveonempty == "true") {
+            leaveonempty = true;
         } else {
-            await queue.addTrack(track.tracks[0]);
-            this.StoreOutputValue(track.tracks[0], "track", cache);
+            leaveonempty = false;
         }
 
-        if (action === "playnow") {
-            await queue.node.play();
-        } else if (!queue.isPlaying()) {
-            await queue.node.play();
+        if (autoselfdeaf == "true") {
+            autoselfdeaf = true;
+        } else {
+            autoselfdeaf = false;
+        }
+
+        if (leaveonend == "true") {
+            leaveonend = true;
+        } else {
+            leaveonend = false;
+        }
+
+        const { useMasterPlayer } = require("discord-player");
+        const player = useMasterPlayer();
+        const res = await player.play(vc, song, {
+            nodeOptions: {
+                metadata: {
+                    channel: vc
+                },
+                autoSelfDeaf: autoselfdeaf,
+                volume: initialvolume,
+                leaveOnEmpty: leaveonempty,
+                leaveOnEnd: leaveonend
+            }
+        });
+
+        if(res.searchResult.playlist) {
+            this.StoreOutputValue(res.searchResult.tracks, "track", cache);
+        } else {
+            this.StoreOutputValue(res.track, "track", cache);
         }
         this.RunNextBlock("action", cache);
     }

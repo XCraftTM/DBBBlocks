@@ -46,6 +46,7 @@ module.exports = {
                 "button": "Button",
                 "modal": "Modal",
                 "menu": "Select Menu",
+                "context": "Context Menu",
                 "any": "Any",
             }
         },
@@ -157,26 +158,26 @@ module.exports = {
         const id_input = this.GetInputValue("id", cache);
         const value_input = this.GetInputValue("value", cache);
         const sub_input = this.GetInputValue("sub", cache);
-        const group_input = this.GetInputValue("group", cache);    
-        
+        const group_input = this.GetInputValue("group", cache);
+
         const id_option = this.GetOptionValue("id", cache) !== '' ? this.GetOptionValue("id", cache) : undefined;
-        const value_option = this.GetOptionValue("value", cache) !== '' ? this.GetOptionValue("value", cache) : undefined; 
+        const value_option = this.GetOptionValue("value", cache) !== '' ? this.GetOptionValue("value", cache) : undefined;
         const sub_option = this.GetOptionValue("sub", cache) !== '' ? this.GetOptionValue("sub", cache) : undefined;
-        const group_option = this.GetOptionValue("group", cache) !== '' ? this.GetOptionValue("group", cache) : undefined;      
+        const group_option = this.GetOptionValue("group", cache) !== '' ? this.GetOptionValue("group", cache) : undefined;
 
         const id = id_input !== undefined ? id_input : id_option;
-        const value = value_input !== undefined ? value_input : value_option;       
-        const sub = sub_input !== undefined ? sub_input : sub_option; 
-        const group = group_input !== undefined ? group_input : group_option;  
+        const value = value_input !== undefined ? value_input : value_option;
+        const sub = sub_input !== undefined ? sub_input : sub_option;
+        const group = group_input !== undefined ? group_input : group_option;
 
         this.events.on('interactionCreate', async interaction => {
-            switch(type) {
+            switch (type) {
                 case "slash":
-                    if (interaction.isChatInputCommand()) {                        
-                        if (interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == group || 
-                        interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == null ||
-                        interaction.commandName == id && interaction.options.getSubcommand(false) == null && interaction.options.getSubcommandGroup(false) == group ||
-                        interaction.commandName == id && sub == undefined && group == undefined) {                            
+                    if (interaction.isChatInputCommand()) {
+                        if (interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == group ||
+                            interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == null ||
+                            interaction.commandName == id && interaction.options.getSubcommand(false) == null && interaction.options.getSubcommandGroup(false) == group ||
+                            interaction.commandName == id && sub == undefined && group == undefined) {
                             //Slash Command
                             this.StoreOutputValue(interaction.options._hoistedOptions, "args", cache)
                             this.StoreOutputValue(interaction.commandName, "name", cache)
@@ -193,7 +194,7 @@ module.exports = {
                         }
                     }
                     break;
-                
+
                 case "button":
                     if (interaction.isButton()) {
                         if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
@@ -226,28 +227,39 @@ module.exports = {
                     }
                     break;
                 case "menu":
-                    if(interaction.isStringSelectMenu()) {                
-                        if(typeof id === "undefined" && typeof value === "undefined" || interaction.customId == id && typeof value === "undefined" || typeof id === "undefined" && interaction.values[0] == value || interaction.customId == id && interaction.values[0] == value) {
-                            OptionID = "" + interaction.values;
+                    if (interaction.isStringSelectMenu()) {
+                        if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
                             this.StoreOutputValue(interaction.customId, "name", cache)
                             this.StoreOutputValue(interaction.member, "member", cache)
                             this.StoreOutputValue(interaction.guild, "server", cache)
                             this.StoreOutputValue(interaction, "interaction", cache)
                             this.StoreOutputValue(interaction.user, "user", cache)
                             this.StoreOutputValue(interaction.channel, "channel", cache);
-                            this.StoreOutputValue(interaction, "interaction", cache)
                             this.StoreOutputValue(interaction.message, "message", cache)
-                            this.StoreOutputValue(OptionID, "menuvalues", cache)
+                            this.RunNextBlock("action", cache);
+                        }
+                    }
+                    break;
+                case "context":
+                    if (interaction.isContextMenuCommand()) {
+                        if (typeof id === "undefined" || interaction.commandName == undefined || interaction.commandName == id) {
+                            this.StoreOutputValue(interaction.commandName, "name", cache)
+                            this.StoreOutputValue(interaction.member, "member", cache)
+                            this.StoreOutputValue(interaction.guild, "server", cache)
+                            this.StoreOutputValue(interaction, "interaction", cache)
+                            this.StoreOutputValue(interaction.user, "user", cache)
+                            this.StoreOutputValue(interaction.channel, "channel", cache);
+                            this.StoreOutputValue(interaction.targetMessage, "message", cache)
                             this.RunNextBlock("action", cache);
                         }
                     }
                     break;
                 case "any":
-                    if (interaction.isChatInputCommand()) {                        
-                        if (interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == group || 
-                        interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == null ||
-                        interaction.commandName == id && interaction.options.getSubcommand(false) == null && interaction.options.getSubcommandGroup(false) == group ||
-                        interaction.commandName == id && sub == undefined && group == undefined) {                            
+                    if (interaction.isChatInputCommand()) {
+                        if (interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == group ||
+                            interaction.commandName == id && interaction.options.getSubcommand(false) == sub && interaction.options.getSubcommandGroup(false) == null ||
+                            interaction.commandName == id && interaction.options.getSubcommand(false) == null && interaction.options.getSubcommandGroup(false) == group ||
+                            interaction.commandName == id && sub == undefined && group == undefined) {
                             //Slash Command
                             this.StoreOutputValue(interaction.options._hoistedOptions, "args", cache)
                             this.StoreOutputValue(interaction.commandName, "name", cache)
@@ -261,7 +273,7 @@ module.exports = {
                             this.StoreOutputValue(interaction.options.getSubcommandGroup(false), "subcommandgroup", cache);
                             this.RunNextBlock("action", cache);
                             break;
-                        }                  
+                        }
                     } else if (interaction.isButton()) {
                         if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
                             //Button
@@ -287,8 +299,8 @@ module.exports = {
                             this.StoreOutputValue(interaction.message, "message", cache)
                             this.RunNextBlock("action", cache);
                         }
-                    } else if(interaction.isStringSelectMenu()) {                
-                        if(typeof id === "undefined" && typeof value === "undefined" || interaction.customId == id && typeof value === "undefined" || typeof id === "undefined" && interaction.values[0] == value || interaction.customId == id && interaction.values[0] == value) {
+                    } else if (interaction.isStringSelectMenu()) {
+                        if (typeof id === "undefined" && typeof value === "undefined" || interaction.customId == id && typeof value === "undefined" || typeof id === "undefined" && interaction.values[0] == value || interaction.customId == id && interaction.values[0] == value) {
                             OptionID = "" + interaction.values;
                             this.StoreOutputValue(interaction.customId, "name", cache)
                             this.StoreOutputValue(interaction.member, "member", cache)
@@ -302,8 +314,8 @@ module.exports = {
                             this.RunNextBlock("action", cache);
                         }
                     }
-                }
             }
+        }
         )
     }
 }
