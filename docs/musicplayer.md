@@ -36,4 +36,4 @@ Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm c
 
 ### Play Music in Voice Channel
 
-![PlayinVC](https://media.discordapp.net/attachments/601468097551138851/1081690416933519500/image.png)
+![PlayinVC](https://i.imgur.com/JgwKUyq.png)
