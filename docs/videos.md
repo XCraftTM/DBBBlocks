@@ -12,5 +12,5 @@ These Videos will follow here soon!
 These Videos are older and are for the older Version of DBB and Discord.JS v12
 
 ??? info "Get Started with Slash Commands"
-    ![type:video](https://www.youtube.com/watch?v=FvFSlUNE6lQ)
+    ![type:video](https://www.youtube.com/embed/FvFSlUNE6lQ)
 
