@@ -2,13 +2,6 @@
 
 ## Setup
 
-If you used Discord Player Before then remove `@discord-player/downloader`:  
-```
-npm remove @discord-player/downloader
-```
-
-<br>
-
 First Update your Library with:  
 
 ```
@@ -20,9 +13,9 @@ npm i discord-player@latest
 Required Dependencies for Downloading and playing Music:  
 
 ```
-npm install @discordjs/opus
-npm install ffmpeg-static
-npm install play-dl
+npm install @discordjs/opus  
+npm install ffmpeg-static (If on Linux, do: apt install ffmpeg)
+npm install @distube/ytdl-core 
 ```
 
 (These will also be installed with `discord audio player dependency`-Block)
@@ -37,3 +30,7 @@ Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm c
 ### Play Music in Voice Channel
 
 ![PlayinVC](https://i.imgur.com/JgwKUyq.png)
+
+### Setup Slash Command Autocomplete
+
+![AutoCompleteSlashCommands](https://cdn.discordapp.com/attachments/1081509800464109638/1085955745671032994/image.png);
