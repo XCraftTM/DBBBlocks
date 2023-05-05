@@ -5,7 +5,7 @@ This Section has Videos that were made by the Community of DBB!
 ## DBB v14 Videos
 Videos that are for the newest Version of DBB and Discord.JS!
 
-### Comming Soon!
+### Coming Soon!
 These Videos will follow here soon!
 
 ## DBB v12 Videos (Outdated)
