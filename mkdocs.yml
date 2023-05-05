@@ -26,7 +26,7 @@ theme:
     - navigation.indexes
     # - navigation.instant
     # - navigation.prune
-    # - navigation.sections
+    - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
@@ -35,7 +35,7 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
-    - toc.integrate
+    # - toc.integrate
   palette:
     - scheme: slate
       primary: indigo
