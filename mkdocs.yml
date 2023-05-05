@@ -82,6 +82,7 @@ extra:
 
 # Extensions
 markdown_extensions:
+  - pymdownx.critic
   - tables
   - abbr
   - admonition
@@ -125,7 +126,7 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Getting Started: index.md
+  - Getting Started: gettingstarted.md
   - Tutorials: 
     - Slash Commands: slash-commands.md
     - Context Menu: context.md
