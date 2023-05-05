@@ -20,13 +20,13 @@ theme:
     - content.code.copy
     # - content.tabs.link
     - content.tooltips
-    - header.autohide
+    # - header.autohide
     - navigation.expand
     - navigation.footer
     - navigation.indexes
     # - navigation.instant
     # - navigation.prune
-    - navigation.sections
+    # - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
@@ -35,7 +35,7 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
-    # - toc.integrate
+    - toc.integrate
   palette:
     - scheme: slate
       primary: indigo
@@ -82,6 +82,7 @@ extra:
 
 # Extensions
 markdown_extensions:
+  - tables
   - abbr
   - admonition
   - attr_list
