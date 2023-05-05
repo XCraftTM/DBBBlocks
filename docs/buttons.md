@@ -6,7 +6,7 @@ This Section will cover how to create a button, multiple buttons and also detect
     - You can get a Emoji on Windows using `WIN+.`
 
 ## Create One Button
-This Contruction will trigger when the `!buttons` Command was run, that will create and send the button with the [Send Message(Components)](https://cdn.discordapp.com/attachments/1061029902125629510/1064287216773374022/send_message_component.js) Block.  
+This Construction will trigger when the `!buttons` Command was run, that will create and send the button with the [Send Message(Components)](https://cdn.discordapp.com/attachments/1061029902125629510/1064287216773374022/send_message_component.js) Block.  
 ![Image](https://i.imgur.com/9cTHNB8.png)
 
 ## Create Multiple Buttons

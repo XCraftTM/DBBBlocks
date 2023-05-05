@@ -15,7 +15,7 @@ Required Dependencies for Downloading and playing Music:
 ```
 npm install @discordjs/opus  
 npm install ffmpeg-static (If on Linux, do: apt install ffmpeg)
-npm install @distube/ytdl-core 
+npm install play-dl
 ```
 
 (These will also be installed with `discord audio player dependency`-Block)
