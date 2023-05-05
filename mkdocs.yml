@@ -23,12 +23,12 @@ theme:
     # - header.autohide
     - navigation.expand
     - navigation.footer
-    #- navigation.indexes
+    # - navigation.indexes
     # - navigation.instant
     # - navigation.prune
     - navigation.sections
-    #- navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
@@ -61,14 +61,14 @@ plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - glightbox:
-       touchNavigation: false
+       touchNavigation: true
        loop: false
        effect: zoom
        slide_effect: slide
        width: 100%
        height: auto
        zoomable: true
-       draggable: false
+       draggable: true
        auto_caption: false
        caption_position: bottom
 
