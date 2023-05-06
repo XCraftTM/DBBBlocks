@@ -167,7 +167,7 @@ DBB always await the end of the Function to execute Block by Block. You only can
 
 ### The `cache` Object
 
-The `cache` Object includes the information arround the Block. Without this the `code` can't interact with the lines. _You only need it for the included funktions from **this**._
+The `cache` Object includes the information arround the Block. Without this the `code` can't interact with the lines. _You only need it for the included functions from **this**._
 
 Example:
 
@@ -185,7 +185,7 @@ Example:
 
 ### The `this` Object
 
-The `this` Object includes all activ Blocks (you **don't** need this) and some usefull Functions for you.
+The `this` Object includes all active Blocks (you **don't** need this) and some usefull Functions for you.
 
 ```javascript
   // Usefull stuff for you!!
