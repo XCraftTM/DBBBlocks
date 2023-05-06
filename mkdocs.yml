@@ -57,9 +57,7 @@ theme:
 
 # Plugins
 plugins:
-  - mkdocs-video:
-      css_style:
-        height: "100%"
+  - mkdocs-video
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - glightbox:
