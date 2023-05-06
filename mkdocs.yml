@@ -128,6 +128,7 @@ markdown_extensions:
 
 # Page tree
 nav:
+  - Home: index.md
   - Getting Started: gettingstarted.md
   - Tutorials: 
     - Slash Commands: slash-commands.md
