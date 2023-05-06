@@ -247,7 +247,7 @@ Output Object from Block:
     ]
 ```
 
-### Modul loading with `this.require()`
+### Module loading with `this.require()`
 
 If you want to import an Module like `fs` or `path` that **aren't** downloaded **from npm**, simply use it like anywhere else, just put it inside the `code` field:
 
