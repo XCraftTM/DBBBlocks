@@ -29,7 +29,6 @@ theme:
     - navigation.sections
     # - navigation.tabs
     # - navigation.tabs.sticky
-    - navigation.instant
     - navigation.top
     - navigation.tracking
     - search.highlight
