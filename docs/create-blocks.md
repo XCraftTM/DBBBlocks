@@ -2,7 +2,7 @@
 
 ## Blocks are the Action Tools of your Bot.
 
-They are created with NodeJS and a Basic Structur for `name`, `inputs`, `options`,`output` and the `code` Part.
+They are created with NodeJS and a Basic Structure for `name`, `inputs`, `options`,`output` and the `code` Part.
 
 ## How to Submit to DBB
 
@@ -14,7 +14,7 @@ If you want to make your Block Public send it into the Blocks Channel on the Dis
 
 If you worked with DBB already you know that there are some different Colors for lines. These are to make it easier for you to see what can be connected **is the same type of Var** and not only for the Style.
 
-The differen types are: `unspecified, undefined, null, object, boolean, number, text, list, date, action`
+The different types are: `unspecified, undefined, null, object, boolean, number, text, list, date, action`
 
 How to use them we'll see later.
 
