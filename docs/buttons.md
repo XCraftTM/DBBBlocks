@@ -3,7 +3,7 @@ This Section will cover how to create a button, multiple buttons and also detect
 
 !!! warning "Important"
     - Each Button needs a Custom ID to detect when it was Pressed
-    - You can get a Emoji on Windows using ++WIN+.++
+    - You can get a Emoji on Windows using ++windows+period++
 
 ## Create One Button
 This Construction will trigger when the `!buttons` Command was run, that will create and send the button with the [Send Message(Components)](https://cdn.discordapp.com/attachments/1061029902125629510/1064287216773374022/send_message_component.js) Block.  
