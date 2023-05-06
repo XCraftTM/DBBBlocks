@@ -1,6 +1,6 @@
 # Getting Started
 This Part will Explain how to install NodeJS, Setup a Bot Project in DBB and create and invite your Discord Bot!  
-
+***
 ## Preparation
 
 ### Installing Node.js
