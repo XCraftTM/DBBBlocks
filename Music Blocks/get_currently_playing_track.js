@@ -43,7 +43,11 @@ module.exports = {
         const { useQueue } = require("discord-player");
         const queue = useQueue(guild.id);
         
-        var track = queue.currentTrack;
+        if(queue) {
+            var track = queue.currentTrack;
+        } else {
+            var track = undefined;
+        }
 
         this.StoreOutputValue(track, "track", cache)
         this.RunNextBlock("action", cache);

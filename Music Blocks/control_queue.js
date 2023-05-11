@@ -28,7 +28,8 @@ module.exports = {
             "description": "Description: What to do with the Queue.",
             "type": "SELECT",
             "options": {
-                "pause": "Pause/Resume",
+                "pause": "Pause",
+                "resume": "Resume",
                 "play": "Play",
                 "skip": "Skip",
                 "stop": "Stop",
@@ -56,11 +57,10 @@ module.exports = {
 
         switch (action) {
             case "pause":
-                if (queue.isPlaying()) {
-                    queue.node.pause();
-                } else if (!queue.isPlaying()) {
-                    queue.node.resume();
-                }
+                queue.node.pause();
+                break;
+            case "resume":
+                queue.node.resume();
                 break;
             case "play":
                 queue.node.play();

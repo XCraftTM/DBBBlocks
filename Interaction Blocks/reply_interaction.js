@@ -7,46 +7,59 @@ module.exports = {
 
     inputs: [
         {
-            "id": "action",
-            "name": "Action",
-            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            "types": ["action"]
+            id: "action",
+            name: "Action",
+            description: "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
+            types: ["action"]
         },
         {
-            "id": "interaction",
-            "name": "Interaction",
-            "description": "Type: Object\n\nDescription: The Title of Your Application",
-            "types": ["object"]
+            id: "interaction",
+            name: "Interaction",
+            description: "Type: Object\n\nDescription: The Title of Your Application",
+            types: ["object"],
+            required: true
         },
         {
-            "id": "message",
-            "name": "Text",
-            "description": "Type: Action\n\nDescription: Executes the following blocks when this block finishes its task.",
-            "types": ["text"]
+            id: "message",
+            name: "Text",
+            description: "Type: Text\n\nDescription: The text to add to the reply",
+            types: ["text", "unspecified"]
         },
         {
             id: "embeds",
             name: "Embed",
-            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
+            description: "Description: The embed to reply with",
             types: ["object", "unspecified"],
         },
         {
-            id: "menu",
-            name: "Menu",
-            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
-            types: ["object", "unspecified"],
+            id: "row1",
+            name: "Component 1",
+            description: "Acceptable Types: Object, List, Unspecified\n\nDescription: The 1st Action Row to send",
+            types: ["object", "list", "unspecified"],
         },
         {
-            id: "button_row",
-            name: "Button Row",
-            description: "Description: To add a Button Row to the Message. (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
-            types: ["object", "unspecified"],
+            id: "row2",
+            name: "Component 2",
+            description: "Acceptable Types: Object, List, Unspecified\n\nDescription: The 2nd Action Row to send",
+            types: ["object", "list", "unspecified"],
         },
         {
-            id: "button",
-            name: "Button",
-            description: "Description: To add a single Button to the Message. (NOT A ROW) (MUST EITHER BE BUTTON OR ROW -- NOT BOTH --)",
-            types: ["object", "unspecified"],
+            id: "row3",
+            name: "Component 3",
+            description: "Acceptable Types: Object, List, Unspecified\n\nDescription: The 3rd Action Row to send",
+            types: ["object", "list", "unspecified"],
+        },
+        {
+            id: "row4",
+            name: "Component 4",
+            description: "Acceptable Types: Object, List, Unspecified\n\nDescription: The 4th Action Row to send",
+            types: ["object", "list", "unspecified"],
+        },
+        {
+            id: "row5",
+            name: "Component 5",
+            description: "Acceptable Types: Object, List, Unspecified\n\nDescription: The 5th Action Row to send",
+            types: ["object", "list", "unspecified"],
         },
         {
             id: "attachment",
@@ -91,55 +104,105 @@ module.exports = {
             "types": ["action"]
         },
         {
-            "id": "output",
-            "name": "Output",
-            "description": "Type: Object, Unspecified\n\nDescription: Fetch Reply, returns Message Object\nReply, Edit and FollowUp, return Message",
-            "types": ["objext", "unspecified"]
+            "id": "interaction",
+            "name": "Interaction",
+            "description": "Type: Object, Unspecified\n\nDescription: The Interaction Object",
+            "types": ["object", "unspecified"]
+        },
+        {
+            "id": "message",
+            "name": "Message",
+            "description": "Type: Object, Unspecified\n\nDescription: The Message Object",
+            "types": ["object", "unspecified"]
         }
     ],
 
     code: async function (cache) {
         const response = this.GetOptionValue("response", cache);
         const interaction = this.GetInputValue("interaction", cache);
+        this.StoreOutputValue(interaction, "interaction", cache);
 
         const { ActionRowBuilder } = require('discord.js');
 
         const msg = this.GetInputValue("message", cache);
         const em = this.GetInputValue("embeds", cache);
         const attachment = this.GetInputValue("attachment", cache);  
-        const button1 = this.GetInputValue("button", cache);
-        const button_row = this.GetInputValue("button_row", cache);
-        const menu1 = this.GetInputValue("menu", cache);
-        let components;
-        let button;
-        let menu;
+        const comp1 = this.GetInputValue("row1", cache);
+        const comp2 = this.GetInputValue("row2", cache);
+        const comp3 = this.GetInputValue("row3", cache);
+        const comp4 = this.GetInputValue("row4", cache);
+        const comp5 = this.GetInputValue("row5", cache);
+        let comps = []
+        let Components;
+        let components1
+        let components2
+        let components3
+        let components4
+        let components5        
+       
 
-        if (button1 !== undefined) {
-            button =
-                new ActionRowBuilder()
-                    .addComponents(button1)
+        if(comp1 && Array.isArray(comp1)) {
+            components1 = new ActionRowBuilder()
+            await comp1.forEach(element => {
+                components1.addComponents(element)
+            });
+        } else if(comp1) {
+            components1 = new ActionRowBuilder().addComponents(comp1)
         }
+        
 
-        if (menu1 !== undefined) {
-            menu =
-                new ActionRowBuilder()
-                    .addComponents(menu1)
+        if(comp2 && Array.isArray(comp2)) {
+            components2 = new ActionRowBuilder()
+            await comp2.forEach(element => {
+                components2.addComponents(element)
+            });
+        } else if(comp2) {
+            components2 = new ActionRowBuilder().addComponents(comp2)
         }
+        
 
-        if (button1 == undefined && button_row == undefined && menu1 !== undefined) {
-            components = [menu]
-        } else if (button_row == undefined && menu1 == undefined && button1 !== undefined) {
-            components = [button]
-        } else if (menu1 == undefined && button1 == undefined && button_row !== undefined) {
-            components = [button_row]
-        } else if (menu1 !== undefined && button_row !== undefined && button1 == undefined) {
-            components = [menu, button_row]
-        } else if (menu1 !== undefined && button1 !== undefined && button_row == undefined) {
-            components = [menu, button]
-        } else if (menu1 == undefined && button1 !== undefined && button_row !== undefined) {
-            components = [button_row, button]
-        } else if (menu1 !== undefined && button1 !== undefined && button_row !== undefined) {
-            components = [menu, button_row, button]
+        if(comp3 && Array.isArray(comp3)) {
+            components3 = new ActionRowBuilder()
+            await comp3.forEach(element => {
+             components3.addComponents(element)
+            });
+        } else if(comp3) {
+            components3 = new ActionRowBuilder().addComponents(comp3)
+        }
+        
+
+        if(comp4 && Array.isArray(comp4)) {
+            components4 = new ActionRowBuilder()
+            await comp4.forEach(element => {
+                components4.addComponents(element)
+            });
+        } else if(comp4) {
+            components4 = new ActionRowBuilder().addComponents(comp4)
+        }
+        
+
+        if(comp5 && Array.isArray(comp5)) {
+            components5 = new ActionRowBuilder()
+            await comp5.forEach(element => {
+                components5.addComponents(element)
+            });
+        } else if(comp5) {
+            components5 = new ActionRowBuilder().addComponents(comp5)
+        }
+         
+
+
+        Components =  [components1, components2, components3, components4, components5]
+
+        Components.forEach(element => {
+            if(element) {
+                comps.push(element)
+            }
+        });
+        
+        comps = comps.filter(comp => comp)
+        if(comps.length > 5) {
+            comps.pop()
         }
 
         let pri = this.GetOptionValue("private", cache);
@@ -153,47 +216,46 @@ module.exports = {
         switch (response) {
             case "reply":
                 if (em !== undefined) {
-                    await interaction.reply({ content: msg, embeds: [em], components: components, files: attachment ? [attachment] : null, ephemeral: awnser });
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    message = await interaction.reply({ content: msg, embeds: [em], components: comps, files: attachment ? [attachment] : null, ephemeral: awnser, fetchReply: true });
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 } else {
-                    await interaction.reply({
+                    message = await interaction.reply({
                         content: msg,
-                        components: components,
+                        components: comps,
                         files: attachment ? [attachment] : null,
-                        ephemeral: awnser
+                        ephemeral: awnser,
+                        fetchReply: true
                     })
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 }
                 break;
             case "edit":
                 if (em !== undefined) {
-                    await interaction.editReply({ content: msg, embeds: [em], components: components, files: attachment ? [attachment] : null, ephemeral: awnser });
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    message = await interaction.editReply({ content: msg, embeds: [em], components: comps, files: attachment ? [attachment] : null, ephemeral: awnser, fetchReply: true });
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 } else {
-                    await interaction.editReply({
+                    message = await interaction.editReply({
                         content: msg,
-                        components: components,
+                        components: comps,
                         files: attachment ? [attachment] : null,
-                        ephemeral: awnser
+                        ephemeral: awnser,
+                        fetchReply: true
                     })
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 }
                 break;
             case "defer":
-                await interaction.deferReply({ ephemeral: awnser });
+                message = await interaction.deferReply({ ephemeral: awnser, fetchReply: true });
+                this.StoreOutputValue(message, "message", cache);
                 this.RunNextBlock("action", cache)
                 break;
             case "fetch":
-                const message = await interaction.fetchReply();
-                this.StoreOutputValue(message, "output", cache);
+                message = await interaction.fetchReply();
+                this.StoreOutputValue(message, "message", cache);
                 this.RunNextBlock("action", cache)
                 break;
             case "delete":
@@ -202,19 +264,18 @@ module.exports = {
                 break;
             case "follow":
                 if (em !== undefined) {
-                    await interaction.followUp({ content: msg, embeds: [em], components: components, files: attachment ? [attachment] : null, ephemeral: awnser });
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    message = await interaction.followUp({ content: msg, embeds: [em], components: comps, files: attachment ? [attachment] : null, ephemeral: awnser, fetchReply: true });
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 } else {
-                    await interaction.followUp({
+                    message = await interaction.followUp({
                         content: msg,
-                        components: components,
+                        components: comps,
                         files: attachment ? [attachment] : null,
-                        ephemeral: awnser
+                        ephemeral: awnser,
+                        fetchReply: true
                     })
-                    const message = await interaction.fetchReply();
-                    this.StoreOutputValue(message, "output", cache);
+                    this.StoreOutputValue(message, "message", cache);
                     this.RunNextBlock("action", cache)
                 }
                 break;

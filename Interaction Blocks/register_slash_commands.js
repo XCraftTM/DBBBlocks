@@ -22,9 +22,10 @@ module.exports = {
 
     async code(cache) {
         const text = JSON.parse("[" + this.GetOptionValue("text", cache) + "]");
+        const client = this.client;
 
-        this.client.application.commands.set(text)
-            .then(console.log("Successfully reloaded "+ text.length + " application (/) commands."))
+        client.application.commands.set(text)
+            .then(this.console("INFO", `Successfully reloaded ${text.length} application (/) commands.`))
             .catch(console.error);
     }
 }

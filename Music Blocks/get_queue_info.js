@@ -46,6 +46,7 @@ module.exports = {
                 11: "Playback Time [Number]",
                 12: "Eta Playback Time [Number]",
                 13: "Volume [Number]",
+                14: "Timestamp [Object]"
             }
         }
     ],
@@ -61,7 +62,7 @@ module.exports = {
             "id": "result",
             "name": "Result",
             "description": "Type: Unspecified\n\nDescription: The information obtained from the bot.",
-            "types": ["unspecified", "object", "list", "text", "boolean"]
+            "types": ["unspecified", "object", "number", "list", "text", "boolean"]
         }
     ],
 
@@ -130,6 +131,9 @@ module.exports = {
                 break;
             case 13:
                 result = queue.node.volume;
+                break;
+            case 14:
+                result = await queue.node.getTimestamp();
                 break;
         }
 

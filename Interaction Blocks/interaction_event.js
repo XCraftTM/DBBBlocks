@@ -45,7 +45,11 @@ module.exports = {
                 "slash": "Slash Command",
                 "button": "Button",
                 "modal": "Modal",
-                "menu": "Select Menu",
+                "stringmenu": "String Select Menu",
+                "rolemenu": "Role Select Menu",
+                "usermenu": "User Select Menu",
+                "channelmenu": "Channel Select Menu",
+                "mentionmenu": "Mentionable Select Menu",
                 "context": "Context Menu",
                 "any": "Any",
             }
@@ -226,8 +230,39 @@ module.exports = {
                         }
                     }
                     break;
-                case "menu":
+                case "stringmenu":
                     if (interaction.isStringSelectMenu()) {
+                        if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
+                            //String Select Menu
+                            this.StoreOutputValue(interaction.customId, "name", cache)
+                            this.StoreOutputValue(interaction.member, "member", cache)
+                            this.StoreOutputValue(interaction.guild, "server", cache)
+                            this.StoreOutputValue(interaction, "interaction", cache)
+                            this.StoreOutputValue(interaction.user, "user", cache)
+                            this.StoreOutputValue(interaction.channel, "channel", cache);
+                            this.StoreOutputValue(interaction.message, "message", cache);
+                            this.StoreOutputValue(interaction.values, "args", cache);
+                            this.RunNextBlock("action", cache);
+                        }
+                    }
+                    break;
+                case "rolemenu":
+                    if (interaction.isRoleSelectMenu()) {
+                        if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
+                            this.StoreOutputValue(interaction.customId, "name", cache)
+                            this.StoreOutputValue(interaction.member, "member", cache)
+                            this.StoreOutputValue(interaction.guild, "server", cache)
+                            this.StoreOutputValue(interaction, "interaction", cache)
+                            this.StoreOutputValue(interaction.user, "user", cache)
+                            this.StoreOutputValue(interaction.channel, "channel", cache);
+                            this.StoreOutputValue(interaction.message, "message", cache);
+                            this.StoreOutputValue(interaction.roles.toJSON(), "args", cache);
+                            this.RunNextBlock("action", cache);
+                        }
+                    }
+                    break;
+                case "usermenu":
+                    if (interaction.isUserSelectMenu()) {
                         if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
                             this.StoreOutputValue(interaction.customId, "name", cache)
                             this.StoreOutputValue(interaction.member, "member", cache)
@@ -236,6 +271,41 @@ module.exports = {
                             this.StoreOutputValue(interaction.user, "user", cache)
                             this.StoreOutputValue(interaction.channel, "channel", cache);
                             this.StoreOutputValue(interaction.message, "message", cache)
+                            this.StoreOutputValue(interaction.users.toJSON(), "args", cache);
+                            this.RunNextBlock("action", cache);
+                        }
+                    }
+                    break;
+                case "channelmenu":
+                    if (interaction.isChannelSelectMenu()) {
+                        if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
+                            this.StoreOutputValue(interaction.customId, "name", cache)
+                            this.StoreOutputValue(interaction.member, "member", cache)
+                            this.StoreOutputValue(interaction.guild, "server", cache)
+                            this.StoreOutputValue(interaction, "interaction", cache)
+                            this.StoreOutputValue(interaction.user, "user", cache)
+                            this.StoreOutputValue(interaction.channel, "channel", cache);
+                            this.StoreOutputValue(interaction.message, "message", cache)
+                            this.StoreOutputValue(interaction.channels.toJSON(), "args", cache);
+                            this.RunNextBlock("action", cache);
+                        }
+                    }
+                    break;
+                case "mentionmenu":
+                    if (interaction.isMentionableSelectMenu()) {
+                        if (typeof id === "undefined" || interaction.customId == undefined || interaction.customId == id) {
+                            this.StoreOutputValue(interaction.customId, "name", cache)
+                            this.StoreOutputValue(interaction.member, "member", cache)
+                            this.StoreOutputValue(interaction.guild, "server", cache)
+                            this.StoreOutputValue(interaction, "interaction", cache)
+                            this.StoreOutputValue(interaction.user, "user", cache)
+                            this.StoreOutputValue(interaction.channel, "channel", cache);
+                            this.StoreOutputValue(interaction.message, "message", cache)
+                            this.StoreOutputValue({
+                                users: interaction.users.toJSON(),
+                                members: interaction.members.toJSON(),
+                                roles: interaction.roles.toJSON()
+                            }, "args", cache);
                             this.RunNextBlock("action", cache);
                         }
                     }

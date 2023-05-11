@@ -68,7 +68,7 @@ module.exports = {
             "id": "output",
             "name": "Output",
             "description": "Type: Object, Text, Number, Unspecified\n\nDescription: The Property Value Obtained.",
-            "types": ["object", "text", "number", "unspecified"]
+            "types": ["unspecified", "text", "object", "number"]
         }
     ],
 
