@@ -32,13 +32,16 @@ This Structure is the Block that get showed in the DBB-Editor, there you can pla
 
     category: "",
 
+    auto_execute: false/true,
+    // This will make your Block run at Startup, for Event Blocks
+
     inputs: [],
 
     options: [],
 
     outputs: [],
 
-    code: function(cache) {
+    code(cache) {
 
     }
 };
@@ -51,18 +54,18 @@ These are The Inputs and Outputs of your Block showen in DBB-Editor. _If you Upd
 ```javascript
     inputs/outputs: [
       {
-            "name": "",
-            "title": "",
-            "description": "",
-            "types": []
-        }
+        "id": "",
+        "name": "",
+        "description": "",
+        "types": []
+      }
     ]
     // types : unspecified, undefined, null, object, boolean, number, text, list, date, action
 ```
 
-In the `name` field gets the Name of the Variable used in the code section. Please make shure that the Names are Unique for the File.
+In the `id` field gets the Name of the Variable used in the code section. Please make shure that the IDs are Unique for the File.
 
-`title` is the Name how its shown in DBB-Editor itself.
+`name` is the Name how its shown in DBB-Editor itself.
 
 `description` is the Text that Pops up if you hover on the Connectionpoint in DBB-Editor. Helpfull to Describe the Types here.
 
@@ -75,14 +78,14 @@ Example:
 ```javascript
       inputs: [
         {
-            "name": "action",
-            "title": "Action",
+            "id": "action",
+            "name": "Action",
             "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
             "types": ["action"]
         },
         {
-            "name": "value",
-            "title": "Value",
+            "id": "value",
+            "name": "Value",
             "description": "Acceptable Types: Unspecified, Undefined, Null, Object, Boolean, Number, Text, List\n\nDescription: ",
             "types": ["unspecified", "undefined", "null", "object", "boolean", "number", "text", "list"]
         }
@@ -92,8 +95,8 @@ Example:
 
       outputs: [
         {
-            "name": "action",
-            "title": "Action",
+            "id": "action",
+            "name": "Action",
             "description": "Type: Action\n\nDescription: Executes blocks.",
             "types": ["action"]
         }
@@ -109,11 +112,11 @@ These are the Options of your Block showed in the DBB-Editor. _If you Update som
 ```javascript
     options: [
       {
-            "name": "",
-            "title": "",
-            "description": "",
-            "type": ""
-        }
+        "id": "",
+        "name": "",
+        "description": "",
+        "type": ""
+      }
     ]
 ```
 
@@ -138,15 +141,15 @@ If you use any other then `SELECT` you are fine with this Options Structure. If 
 ```javascript
     options:[
       {
+        "id": "",
         "name": "",
-        "title": "",
         "description": "",
         "type": "SELECT",
-        "options": [
+        "options": {
           1 : "Option to Select 1",
           2 : "Option to Select 2",
-          3 : ...
-        ]
+          3 : "etc."
+        }
       }
     ]
 ```
@@ -160,8 +163,8 @@ For this Stuff you need some knowledge in Javascript. You can do mostly anything
 DBB always await the end of the Function to execute Block by Block. You only can controll where the Flow goes on.
 
 ```javascript
-    code: function(cache){
-
+    code(cache) {
+      ...
     }
 ```
 
@@ -173,11 +176,12 @@ Example:
 
 ```javascript
   {
-  "name":"",
-  "index":"",
-  "workspace":"",
-  "inputs":{},
-  "outputs":{}
+    "workspace": "",
+    "name": "",
+    "index": "",
+    "inputs": {},
+    "options": {},
+    "outputs": {}
   }
 ```
 
@@ -189,10 +193,10 @@ The `this` Object includes all active Blocks (you **don't** need this) and some 
 
 ```javascript
   // Usefull stuff for you!!
-  this.GetInputValue("linename", cache);
-  this.GetOptionValue("linename", cache);
-  this.StoreOutputValue(number, "linename", cache);
-  this.RunNextBlock("linename", cache);
+  this.GetInputValue("id", cache);
+  this.GetOptionValue("id", cache);
+  this.StoreOutputValue(object, "id", cache);
+  this.RunNextBlock("id", cache);
   await this.require("npmmodul");
   // Just ignore anything else ;)
 ```
@@ -202,7 +206,7 @@ With this functions you can get or store the Input-, Option- and Output values o
 For Example here is the code Block from the Print Action.
 
 ```javascript
-  code: function(cache) {
+  code(cache) {
     const content = this.GetInputValue("value", cache);
 
     console.log(content);
@@ -218,14 +222,14 @@ Input Object from Block:
 ```javascript
     inputs: [
         {
-            "name": "action",
-            "title": "Action",
+            "id": "action",
+            "name": "Action",
             "description": "Acceptable Types: Action\n\nDescription: Executes this block.",
             "types": ["action"]
         },
         {
-            "name": "value",
-            "title": "Value",
+            "id": "value",
+            "name": "Value",
             "description": "Acceptable Types: Unspecified, Undefined, Null, Object, Boolean, Number, Text, List\n\nDescription: The value that you want to send to your console.",
             "types": ["unspecified", "undefined", "null", "object", "boolean", "number", "text", "list"]
         }
@@ -239,8 +243,8 @@ Output Object from Block:
 ```javascript
     outputs: [
       {
-        "name": "action",
-        "title": "Action",
+        "id": "action",
+        "name": "Action",
         "description": "Type: Action\n\nDescription: Executes blocks.",
         "types": ["action"]
       }
@@ -254,8 +258,8 @@ If you want to import an Module like `fs` or `path` that **aren't** downloaded *
 Example:
 
 ```javascript
-    code : function(cache){
-      const path = require("path");
+    async code(cache) {
+      const path = await require("path");
       // and go on like you wan't...
     }
 ```
@@ -265,7 +269,7 @@ If you want to import an Module like `discord.js` **from npm** please use `this.
 Example:
 
 ```javascript
-    code : function(cache){
+    async code(cache) {
       const discord = await this.require("discord.js");
       // and go on :)
     }
