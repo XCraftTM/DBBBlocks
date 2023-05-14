@@ -8,7 +8,7 @@ This Part will Explain how to install NodeJS, Setup a Bot Project in DBB and cre
 In order to allow your bot to run, you will need to install Node.js.
 
 ??? info "Installing on Windows"
-    - Click [here](https://nodejs.org/dist/latest-v18.x/node-v18.15.0-x64.msi) to download the installer for the LTS version of Node.js.
+    - Click [here](https://nodejs.org/download/release/latest-v18.x/node-v18.16.0-x64.msi){:target="_blank"} to download the installer for the LTS version of Node.js.
     - Follow the installer's instructions
 
 ??? info "Installing on Ubuntu via CLI"
@@ -33,7 +33,7 @@ The bot will be saved in the folder "DBBProjects" in a new folder and with the p
 
 ### Create a New Bot Account and Set it Up in DBB
 
-Go to the [Discord Developer Portal](https://discord.com/developers/applications). If you've never made a bot before, you should be shown this screen:
+Go to the [Discord Developer Portal](https://discord.com/developers/applications){:target="_blank"}. If you've never made a bot before, you should be shown this screen:
 
 Do the following things:
 1. Create a New Application with the name of your Choice

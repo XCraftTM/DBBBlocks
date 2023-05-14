@@ -6,16 +6,16 @@ This Section will cover how to create a button, multiple buttons and also detect
     - You can get a Emoji on Windows using ++windows+period++
 
 ## Create One Button
-This Construction will trigger when the `!buttons` Command was run, that will create and send the button with the [Send Message(Components)](https://cdn.discordapp.com/attachments/1061029902125629510/1064287216773374022/send_message_component.js) Block.  
+This Construction will trigger when the `!buttons` Command was run, that will create and send the button with the [Send Message(Components)](https://cdn.discordapp.com/attachments/1061029902125629510/1064287216773374022/send_message_component.js){:target="_blank"} Block.  
 ![Image](https://i.imgur.com/9cTHNB8.png)
 
 ## Create Multiple Buttons
-We are going to use the same command like the first one and just add more [Create Button](https://cdn.discordapp.com/attachments/1061025650422583376/1084958759266295838/create_button.js) Blocks. In Combination with [Create Button Row](https://cdn.discordapp.com/attachments/1061025650422583376/1061433811906347090/create_button_row.js)  
+We are going to use the same command like the first one and just add more [Create Button](https://cdn.discordapp.com/attachments/1061025650422583376/1084958759266295838/create_button.js){:target="_blank"} Blocks. In Combination with [Create Button Row](https://cdn.discordapp.com/attachments/1061025650422583376/1061433811906347090/create_button_row.js){:target="_blank"}  
 ![https://i.imgur.com/bOXExvC.png](https://i.imgur.com/bOXExvC.png)
 
 ## Detect and handle a Button Press
 
-You can use the [Interaction Event](https://cdn.discordapp.com/attachments/1074299564758159421/1083629798422753381/interaction_event.js) to detect a Button Press using the Custom ID. Also to get the Current Time and Date you use the `Create Date` Block and using the `Format Date` Block you can get the Date in a Text Type. To now send a message back to the User that used the Button, you can use the [Reply to Interaction](https://cdn.discordapp.com/attachments/1063947208916992042/1087368804021059605/reply_interaction.js) Block.  
+You can use the [Interaction Event](https://cdn.discordapp.com/attachments/1074299564758159421/1083629798422753381/interaction_event.js){:target="_blank"} to detect a Button Press using the Custom ID. Also to get the Current Time and Date you use the `Create Date` Block and using the `Format Date` Block you can get the Date in a Text Type. To now send a message back to the User that used the Button, you can use the [Reply to Interaction](https://cdn.discordapp.com/attachments/1063947208916992042/1087368804021059605/reply_interaction.js){:target="_blank"} Block.  
 (Ephemeral means only visible to the user)  
 ![https://i.imgur.com/9imoEyd.png](https://i.imgur.com/9imoEyd.png)  
 
@@ -27,4 +27,4 @@ When you launch the bot you can now use the example command that was created, an
 Since you now know how to handle one button, you can do the same for the other example buttons and try to send a Message Back!
 
 ## Still Issues or Questions?
-If you have Issues or any questions you can always ask on the [Discord Bot Builder Discord](https://discord.gg/PAzxTDw), or send me a DM: `XCraftTM#5396`!
+If you have Issues or any questions you can always ask on the [Discord Bot Builder Discord](https://discord.gg/PAzxTDw){:target="_blank"}, or send me a DM: `XCraftTM#5396`!
