@@ -29,8 +29,10 @@ Remove `node_modules`, `package-lock.json` or any lockfiles you have, run `npm c
 
 ### Play Music in Voice Channel
 
-![PlayinVC](https://i.imgur.com/JgwKUyq.png)
+Playing Music is really easy, and doesn't take a lot of Blocks... Here is a Simple Example:
+
+![PlayinVC](https://i.imgur.com/inEUci8.png)
 
 ### Setup Slash Command Autocomplete
 
-![AutoCompleteSlashCommands](https://cdn.discordapp.com/attachments/1081509800464109638/1085955745671032994/image.png);
+![AutoCompleteSlashCommands](https://cdn.discordapp.com/attachments/1081509800464109638/1085955745671032994/image.png)
