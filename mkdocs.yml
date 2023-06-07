@@ -130,6 +130,7 @@ nav:
   - Main:
     - Getting Started: gettingstarted.md
     - Installing Mods: mods.md
+    - Adding Workspaces: workspaces.md
     - Troubleshooting: troubleshooting.md
   - Tutorials: 
     - Slash Commands: slash-commands.md
@@ -138,7 +139,7 @@ nav:
     - Buttons: buttons.md
     - Embeds: embeds.md
     - Select Menu: select.md
-    - Discord Audio Player: musicplayer.md
+    - Music Blocks: musicplayer.md
   - Community: 
     - Videos: videos.md
   - Extra:
