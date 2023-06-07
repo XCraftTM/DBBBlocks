@@ -20,3 +20,19 @@ For that we use the `Merge Texts (Advanced)` Block.
 ![Image](https://i.imgur.com/V1Yhuzb.png)
 
 ![Image](https://i.imgur.com/5JwIQrD.png)
+
+## Editing Embeds
+Editing Embeds is a kinda hard Task if you don't know which Blocks you need to use.
+Here is a still simple example how to do it, safely.
+
+At the Top it shows the Command Example from above and at the end of it, is now added a `Control Data` Block.
+This Blocks Saves the Message ID for editing the Embed later.
+
+The Bottom Part shows a `!editembed` Command where first it gets the Message ID we saved earlier using `Get Data`, then finds the Message using `Find Message`(Make sure to connect a Channel), then gets the Embeds and then gets the first one using `Get Item from List`.
+You can then edit the Embed using `Edit Message Embed`(For this Tutorial there was a fixed version, use the best one for you) and then edit the Message using `Edit Message`(Make sure to connect the Message from the Find Message Block, and not from the Command).
+
+![image](https://i.imgur.com/JDMsJ21.png)
+
+In Discord it looks like this!
+
+![GIF](https://i.imgur.com/SbM7CSr.gif)
