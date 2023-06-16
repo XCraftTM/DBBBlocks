@@ -16,6 +16,10 @@ The Website display you a Preview of the Command on the right!
 
 ## Add Command to DBB
 
+!!! warning
+    - You can Only use **One** `Register Slash Commands` Block Per **_Project_**
+    - You can add multiple Commands by using `,` to split the commands
+
 After you built your Command, you click "View Code" and Copy only the Part from the first { to the last }.  
 ![Image](https://i.imgur.com/2kUuGOc.png)
 
@@ -32,7 +36,3 @@ Next you add the [Get Interaction Argument by Name](https://github.com/XCraftTM/
 ## Testing the Finished Product
 
 After you start your Bot the Command(s) should be available in Discord!
-
-!!! warning
-    - You can Only use **One Block Per Project**
-    - You can add multiple Commands by using `,` to split the commands
