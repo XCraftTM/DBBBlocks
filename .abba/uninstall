@@ -1,3 +1,0 @@
-#!/bin/sh
-rm -f /var/www/html/.htaccess
-rm -rf /var/www/html/.abba
