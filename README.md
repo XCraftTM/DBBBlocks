@@ -9,6 +9,6 @@ Open a Pull Request, if you want to Add a Block of your Own!
 
 ## Credits
 Blocks by:  
-- XCraftTM#5396  
+- XCraftTM  
 
 More Following Soon.  

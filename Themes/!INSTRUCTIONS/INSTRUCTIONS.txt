@@ -1,0 +1,9 @@
+- Instructions for installing -
+
+1: Open DBB Folder (you can also open it from DBB by pressing ctrl + alt + D / project tab, the very bottom)
+
+2: Open "resources" folder
+
+3: Drop the theme inside (rename file to style.css if not named correctly)
+
+NOTE: Dont forget to make a backup copy of the original style.css

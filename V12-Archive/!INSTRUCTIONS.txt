@@ -1,0 +1,5 @@
+INSTRUCTIONS
+
+1: click on the block you want
+2: right click > save as > save to your bot blocks folder (ctrl + s for shortcut)
+3: (DO NOT PRESS UPDATE BLOCKS UNLESS YOU MOVED IT IN DBB BLOCKS FOLDER)

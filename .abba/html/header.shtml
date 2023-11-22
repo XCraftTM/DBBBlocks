@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/.abba/css/style.css">
+    <title>DBB Blocks</title>
+    <link rel="icon" type="image/svg+xml" href="/.abba/images/favicon.svg">
+    <link rel="alternate icon" href="/.abba/images/favicon.ico">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container"> <a class="navbar-brand" href="/">DBB Blocks</a> 
+                    <div class="d-flex"> 
+                        <input class="form-control" type="search" placeholder="Search..." title="Search" aria-label="Filter"></div>
+            </div>
+        </nav>
+    </header>
+    <main style="display:none">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"></ol>
+            </nav>
